@@ -3,11 +3,11 @@ version: '3.8'
 services:
   db:
     image: postgres:15
-    container_name: postgras_taks
+    container_name: postgres_tasks
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: taks_db
+      POSTGRES_DB: postgres
     ports:
       - "5432:5432"
     volumes:
@@ -15,7 +15,7 @@ services:
 
   api:
     build: .
-    container_name: taks_api
+    container_name: tasks_api
     ports:
       - "3000:3000"
     environment:
@@ -23,7 +23,7 @@ services:
       DB_HOST: db
       DB_USER: postgres
       DB_PASSWORD: postgres
-      DB_NAME: taks_db
+      DB_NAME: postgres
       DB_PORT: 5432
     depends_on:
       - db
